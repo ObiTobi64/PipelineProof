@@ -3,13 +3,9 @@ pipeline {
     stages {
         stage('Clonar Repositorio') {
             steps {
-                // Clonar el repositorio usando la directiva checkout
-                checkout([$class: 'GitSCM', 
-                          branches: [[name: '*/master']], 
-                          doGenerateSubmoduleConfigurations: false, 
-                          extensions: [], 
-                          submoduleCfg: [], 
-                          userRemoteConfigs: [[url: 'https://github.com/ObiTobi64/PipelineProof.git']]])
+                sh 'echo "Intentando Clonar Repositorio"'
+         checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'ObiTobi64', url: 'https://github.com/ObiTobi64/PipelineProof.git']]])
+                sh 'echo "Repositorio Clonado"'
             }
         }
         stage('DEV') {

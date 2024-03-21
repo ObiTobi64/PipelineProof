@@ -1,1 +1,40 @@
-PRUEBA DE LAS 4 FASES DEV, QA, STAGE Y PROD
+pipeline {
+    agent any
+    stages {
+        stage('Clonar Repositorio') {
+            steps {
+                // Clonar el repositorio usando la directiva checkout
+                checkout([$class: 'GitSCM', 
+                          branches: [[name: '*/master']], 
+                          doGenerateSubmoduleConfigurations: false, 
+                          extensions: [], 
+                          submoduleCfg: [], 
+                          userRemoteConfigs: [[url: 'https://github.com/ObiTobi64/PipelineProof.git']]])
+            }
+        }
+        stage('DEV') {
+            steps {
+                // Acciones para el entorno de desarrollo (DEV)
+                sh 'echo "Despliegue en entorno DEV"'
+            }
+        }
+        stage('QA') {
+            steps {
+                // Acciones para el entorno de pruebas (QA)
+                sh 'echo "Despliegue en entorno QA"'
+            }
+        }
+        stage('STAGE') {
+            steps {
+                // Acciones para el entorno de staging (STAGE)
+                sh 'echo "Despliegue en entorno STAGE"'
+            }
+        }
+        stage('PROD') {
+            steps {
+                // Acciones para el entorno de producción (PROD)
+                sh 'echo "Despliegue en entorno PROD"'
+            }
+        }
+    }
+}

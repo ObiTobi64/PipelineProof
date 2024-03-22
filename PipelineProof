@@ -3,33 +3,33 @@ pipeline {
     stages {
         stage('Clonar Repositorio') {
             steps {
-                sh 'echo "Intentando Clonar Repositorio"'
-         checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'ObiTobi64', url: 'https://github.com/ObiTobi64/PipelineProof.git']]])
-                sh 'echo "Repositorio Clonado"'
+                bat 'echo "Intentando Clonar Repositorio"'
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'ObiTobi64', url: 'https://github.com/ObiTobi64/PipelineProof.git']]])
+                bat 'echo "Repositorio Clonado"'
             }
         }
         stage('DEV') {
             steps {
                 // Acciones para el entorno de desarrollo (DEV)
-                sh 'echo "Despliegue en entorno DEV"'
+                bat 'echo "Despliegue en entorno DEV"'
             }
         }
         stage('QA') {
             steps {
                 // Acciones para el entorno de pruebas (QA)
-                sh 'echo "Despliegue en entorno QA"'
+                bat 'echo "Despliegue en entorno QA"'
             }
         }
         stage('STAGE') {
             steps {
                 // Acciones para el entorno de staging (STAGE)
-                sh 'echo "Despliegue en entorno STAGE"'
+                bat 'echo "Despliegue en entorno STAGE"'
             }
         }
         stage('PROD') {
             steps {
                 // Acciones para el entorno de producción (PROD)
-                sh 'echo "Despliegue en entorno PROD"'
+                bat 'echo "Despliegue en entorno PROD"'
             }
         }
     }
